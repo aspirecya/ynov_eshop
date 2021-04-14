@@ -3,25 +3,20 @@
 		<div>
 			<Logo />
 			<h1 class="title">
-				ynov-eshop
+				Ynov Eshop
 			</h1>
 			<div class="links">
-				<a
-					href="https://nuxtjs.org/"
-					target="_blank"
-					rel="noopener noreferrer"
+				<NuxtLink
+					to="/eshop/"
 					class="button--green"
 				>
-					Documentation
-				</a>
-				<a
-					href="https://github.com/nuxt/nuxt.js"
-					target="_blank"
-					rel="noopener noreferrer"
-					class="button--grey"
+					Shop
+				</NuxtLink>
+				<NuxtLink
+					to="/login/"
 				>
-					GitHub
-				</a>
+					Loging
+				</NuxtLink>
 			</div>
 		</div>
 	</div>
