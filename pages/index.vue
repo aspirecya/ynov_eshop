@@ -14,8 +14,9 @@
 				</NuxtLink>
 				<NuxtLink
 					to="/login/"
+					class="button--green"
 				>
-					Loging
+					Login
 				</NuxtLink>
 			</div>
 		</div>
