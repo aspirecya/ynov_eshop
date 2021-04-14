@@ -2,7 +2,7 @@
   "name": "ynov-eshop",
   "version": "1.0.0",
   "engine": {
-	  "node": "15.x"
+    "node": "15.x"
   },
   "private": true,
   "scripts": {
@@ -19,8 +19,10 @@
     "core-js": "^3.6.5",
     "graphql-tag": "^2.11.0",
     "moment": "^2.29.1",
+    "node-sass": "^5.0.0",
     "nuxt": "^2.14.6",
     "sass": "^1.32.8",
+    "sass-loader": "^11.0.1",
     "vue-jwt-decode": "^0.1.0",
     "vue-stripe-elements-plus": "^1.0.0"
   },
