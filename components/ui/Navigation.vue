@@ -63,8 +63,8 @@ export default {
 			localStorage.removeItem('token');
 			this.$store.commit('loggedOut');
 			this.$store.dispatch('clearCart');
-			this.$router.push('login');
 			this.$store.dispatch("addSuccess", "You logged out.");
+			this.$router.push('login');
 			this.reloadNavigation();
 		},
 		isLogged: function () {

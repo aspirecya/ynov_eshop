@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<Navigation />
+<!--		<Navigation />-->
 		<div class="fixed z-50 w-full max-w-2xl ml-8 py-4">
 			<AlertBox></AlertBox>
 		</div>
