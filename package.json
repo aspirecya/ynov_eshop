@@ -1,9 +1,6 @@
 {
   "name": "ynov-eshop",
   "version": "1.0.0",
-  "engine": {
-    "node": "15.x"
-  },
   "private": true,
   "scripts": {
     "dev": "nuxt",
