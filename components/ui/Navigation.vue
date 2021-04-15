@@ -68,17 +68,20 @@ export default {
 			this.reloadNavigation();
 		},
 		isLogged: function () {
-			if(process.browser) {
-				return !!localStorage.getItem('token');
+			if(process.server) {
+				return
 			}
+			return !!localStorage.getItem('token');
 		},
 		isAdmin: function () {
 			if(process.browser) {
-				let token = localStorage.getItem('token');
-				if(token) {
-					const jwtDecoded = this.$decodeJwt(token);
-					return !!jwtDecoded.admin;
-				}
+				return
+			}
+
+			let token = localStorage.getItem('token');
+			if(token) {
+				const jwtDecoded = this.$decodeJwt(token);
+				return !!jwtDecoded.admin;
 			}
 		},
 		reloadNavigation: function() {
