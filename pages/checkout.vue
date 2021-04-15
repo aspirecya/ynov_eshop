@@ -198,7 +198,7 @@ export default {
 				.then((data) => {
 					this.$store.dispatch("clearCart");
 					this.$store.dispatch("addSuccess", "Order has been successfully processed.");
-					this.$router.push('eshop');
+					this.$router.push('/eshop/');
 				})
 				.catch(err => {
 					console.log(err)

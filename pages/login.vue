@@ -99,7 +99,7 @@ export default {
 							let token = data.token;
 							localStorage.setItem('token',token);
 							this.$store.commit('isAuth');
-							this.$router.push('account');
+							this.$router.push('/account/');
 							this.$store.dispatch("addSuccess", "You logged in.");
 						}
 					}
