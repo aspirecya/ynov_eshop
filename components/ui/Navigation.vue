@@ -74,7 +74,7 @@ export default {
 			return !!localStorage.getItem('token');
 		},
 		isAdmin: function () {
-			if(process.browser) {
+			if(process.server) {
 				return
 			}
 
