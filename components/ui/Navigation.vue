@@ -13,15 +13,15 @@
 							Shop
 						</NuxtLink>
 
-						<NuxtLink to="/register" v-if="!isLogged()" class="text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">
+						<NuxtLink to="/register" v-show="!isLogged()" class="text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">
 							Register
 						</NuxtLink>
 
-						<NuxtLink to="/login" v-if="!isLogged()" class="text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">
+						<NuxtLink to="/login" v-show="!isLogged()" class="text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">
 							Login
 						</NuxtLink>
 
-						<NuxtLink to="/account" v-if="isLogged()" class="text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">
+						<NuxtLink to="/account" v-show="isLogged()" class="text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">
 							Account
 						</NuxtLink>
 
@@ -29,15 +29,15 @@
 							About
 						</NuxtLink>
 
-						<NuxtLink to="/cart" v-if="isLogged()" class="text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">
-							Cart  <span v-if="totalItems > 0" class="ml-1">({{ totalItems }})</span>
+						<NuxtLink to="/cart" v-show="isLogged()" class="text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">
+							Cart  <span v-show="totalItems > 0" class="ml-1">({{ totalItems }})</span>
 						</NuxtLink>
 
-						<NuxtLink to="/admin/dashboard" v-if="isAdmin()" class="text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">
+						<NuxtLink to="/admin/dashboard" v-show="isAdmin()" class="text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">
 							Admin
 						</NuxtLink>
 
-						<button v-if="isLogged()" @click.prevent="logout" class="text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:outline-none inline-flex items-center px-1 pt-1 text-sm font-medium">
+						<button v-show="isLogged()" @click.prevent="logout" class="text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:outline-none inline-flex items-center px-1 pt-1 text-sm font-medium">
 							Logout
 						</button>
 					</div>
@@ -63,25 +63,22 @@ export default {
 			localStorage.removeItem('token');
 			this.$store.commit('loggedOut');
 			this.$store.dispatch('clearCart');
-			this.$store.dispatch("addSuccess", "You logged out.");
 			this.$router.push('login');
+			this.$store.dispatch("addSuccess", "You logged out.");
 			this.reloadNavigation();
 		},
 		isLogged: function () {
-			if(process.server) {
-				return
+			if(process.browser) {
+				return !!localStorage.getItem('token');
 			}
-			return !!localStorage.getItem('token');
 		},
 		isAdmin: function () {
-			if(process.server) {
-				return
-			}
-
-			let token = localStorage.getItem('token');
-			if(token) {
-				const jwtDecoded = this.$decodeJwt(token);
-				return !!jwtDecoded.admin;
+			if(process.browser) {
+				let token = localStorage.getItem('token');
+				if(token) {
+					const jwtDecoded = this.$decodeJwt(token);
+					return !!jwtDecoded.admin;
+				}
 			}
 		},
 		reloadNavigation: function() {
@@ -97,7 +94,7 @@ export default {
 </script>
 
 <style scoped>
-	.nuxt-link-active {
-		@apply border-indigo-500 text-gray-900;
-	}
+.nuxt-link-active {
+	@apply border-indigo-500 text-gray-900;
+}
 </style>
