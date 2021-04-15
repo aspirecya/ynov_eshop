@@ -13,15 +13,15 @@
 							Shop
 						</NuxtLink>
 
-						<NuxtLink to="/register" class="text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">
+						<NuxtLink to="/register" v-if="!isLogged()" class="text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">
 							Register
 						</NuxtLink>
 
-						<NuxtLink to="/login" class="text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">
+						<NuxtLink to="/login" v-if="!isLogged()" class="text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">
 							Login
 						</NuxtLink>
 
-						<NuxtLink to="/account" class="text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">
+						<NuxtLink to="/account" v-if="isLogged()" class="text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">
 							Account
 						</NuxtLink>
 
@@ -29,15 +29,15 @@
 							About
 						</NuxtLink>
 
-						<NuxtLink to="/cart" class="text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">
+						<NuxtLink to="/cart" v-if="isLogged()" class="text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">
 							Cart  <span v-if="totalItems > 0" class="ml-1">({{ totalItems }})</span>
 						</NuxtLink>
 
-						<NuxtLink to="/admin/dashboard" class="text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">
+						<NuxtLink to="/admin/dashboard" v-if="isAdmin()" class="text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 text-sm font-medium">
 							Admin
 						</NuxtLink>
 
-						<button class="text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:outline-none inline-flex items-center px-1 pt-1 text-sm font-medium">
+						<button v-if="isLogged()" @click.prevent="logout" class="text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:outline-none inline-flex items-center px-1 pt-1 text-sm font-medium">
 							Logout
 						</button>
 					</div>
