@@ -48,7 +48,7 @@ export default {
 	apollo: {
 		clientConfigs: {
 			default: {
-				httpEndpoint:"http://localhost:3030/graphql"
+				httpEndpoint:"https://ynov-fullstack.herokuapp.com/graphql"
 			}
 		}
 	},
