@@ -29,6 +29,15 @@
 						</dd>
 					</div>
 
+					<div class="py-4 sm:grid sm:py-5 sm:grid-cols-3 sm:gap-4">
+						<dt class="text-sm font-medium text-gray-500">
+							Admin account?
+						</dt>
+						<dd class="mt-1 flex text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+							<span class="flex-grow">{{ user.admin }}</span>
+						</dd>
+					</div>
+
 					<div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
 						<dt class="text-sm font-medium text-gray-500">
 							User e-mail
@@ -107,6 +116,18 @@
 						</dd>
 					</div>
 
+					<div class="py-4 sm:grid sm:py-5 sm:grid-cols-3 sm:gap-4">
+						<dt class="text-sm font-medium text-gray-500">
+							Admin account?
+						</dt>
+						<dd class="mt-1 flex text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+							<select v-model="admin" class="flex-1 p-1 mx-1 bg-gray-200 focus:ring-indigo-500 focus:border-indigo-500 block w-full min-w-0 rounded-md sm:text-sm border-black">
+								<option value="true">Admin</option>
+								<option value="false">Non admin</option>
+							</select>
+						</dd>
+					</div>
+
 					<div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
 						<dt class="text-sm font-medium text-gray-500">
 							User e-mail
@@ -177,6 +198,7 @@ export default {
 			lastname: "",
 			address: "",
 			phone: "",
+			admin: "",
 		}
 	},
 	beforeMount() {
@@ -203,6 +225,7 @@ export default {
 			if(token) {
 				const jwtDecoded = this.$decodeJwt(token);
 				const body = {
+					admin: this.admin,
 					email: this.email,
 					firstname: this.firstname,
 					lastname: this.lastname,
