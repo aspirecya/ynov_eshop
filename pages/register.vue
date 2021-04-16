@@ -145,8 +145,6 @@ export default {
 
 	methods: {
 		register: function () {
-			console.log(this.email, this.password, this.firstName, this.lastName, this.phone, this.address);
-
 			const body = {
 				email: this.email,
 				password: this.password,
@@ -158,7 +156,6 @@ export default {
 
 			this.$register(body)
 				.then((data) => {
-					console.log(data);
 					if (!data.auth) {
 						this.messageError = data.details[0].message;
 					}

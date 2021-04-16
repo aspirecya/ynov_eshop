@@ -201,7 +201,6 @@ export default {
 					this.$router.push('/eshop/');
 				})
 				.catch(err => {
-					console.log(err)
 					this.$store.dispatch("addError", err);
 				})
 		},

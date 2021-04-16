@@ -16,7 +16,7 @@
 				<div class="border-t border-gray-200 px-4 py-6 sm:px-6">
 					<dl class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
 						<div class="sm:col-span-1">
-							<dt v-on:click="test" class="text-sm font-medium text-gray-500">
+							<dt class="text-sm font-medium text-gray-500">
 								Email address
 							</dt>
 							<dd class="mt-1 text-sm text-gray-900">
@@ -274,9 +274,6 @@ export default {
 	methods: {
 		toggleEdit: function() {
 			this.editMode = !this.editMode;
-		},
-		test: function () {
-			console.log(this.user);
 		},
 		editUser: function() {
 			const token = localStorage.getItem('token');

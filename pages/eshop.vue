@@ -61,8 +61,6 @@ export default {
 			prefetch:true,
 			query : Products,
 			update(data) {
-				console.log(data.products);
-				console.log(this.loading);
 				return data.products;
 			}
 		}
